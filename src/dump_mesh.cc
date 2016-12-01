@@ -1,12 +1,12 @@
 #include "./common.h"
 
 void _dump_vertices (v8::Local<v8::Object> _mesh, FbxMesh *_fbxMesh) {
-  uint vertCount = _fbxMesh->GetControlPointsCount();
+  int vertCount = _fbxMesh->GetControlPointsCount();
   FbxVector4 *fbxVertices = _fbxMesh->GetControlPoints();
 
   v8::Local<v8::Array> vertices = Nan::New<v8::Array>(3*vertCount);
 
-  for ( uint i = 0; i < vertCount; ++i ) {
+  for ( int i = 0; i < vertCount; ++i ) {
     FbxVector4 &point = fbxVertices[i];
 
     // NOTE: it is possible in fbx contains NaN data

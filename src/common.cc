@@ -1,8 +1,8 @@
 #include "./common.h"
 
 #ifdef IOS_REF
-	#undef IOS_REF
-	#define IOS_REF (*(_fbxMgr->GetIOSettings()))
+  #undef IOS_REF
+  #define IOS_REF (*(_fbxMgr->GetIOSettings()))
 #endif
 
 void init_fbx_sdk (FbxManager *&_fbxMgr, FbxScene *&_fbxScene) {

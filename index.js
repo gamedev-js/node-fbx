@@ -58,10 +58,7 @@ module.exports = {
 
 /**
  * scene = {
- *   root: { name: '', children: [
- *     { name: 'a', type: 'mesh', meshID: 0 },
- *     { name: 'b', type: '', children: [ ... ] },
- *   ]},
+ *   nodes: [...],
  *   meshes: [...],
  *   materials: [...],
  *   animationClips: [...],
