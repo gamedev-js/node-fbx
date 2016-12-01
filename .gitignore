@@ -1,0 +1,38 @@
+# mac-osx files
+.DS_store
+profile
+
+# visual-studio files
+*.ncb
+*.sln
+*.suo
+*.vcproj.*.user
+*.pdb
+*.idb
+*.csproj
+*.csproj.user
+
+# exvim files
+*.err
+*.exvim
+.exvim.*/
+
+# webstorm
+.idea
+
+# log files
+*.log
+
+# node files
+.nyc_output/
+build/
+
+# modules
+node_modules/
+bower_components/
+assets-3d/
+
+# misc
+vendor/
+models/
+tmp/

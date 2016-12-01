@@ -1,0 +1,26 @@
+{
+  "name": "node-fbx",
+  "version": "1.0.0",
+  "description": "fbx sdk for node.js",
+  "main": "index.js",
+  "bin": {
+    "fbx": "bin/run.js"
+  },
+  "scripts": {
+    "build": "node-gyp rebuild",
+    "install": "node-gyp rebuild",
+    "test": "tap test/**/*.js"
+  },
+  "keywords": [
+    "fbx"
+  ],
+  "author": "jwu",
+  "license": "MIT",
+  "dependencies": {
+    "bindings": "^1.2.1",
+    "nan": "^2.4.0"
+  },
+  "devDependencies": {
+    "tap": "^8.0.1"
+  }
+}
