@@ -5,14 +5,14 @@ const addon = bindings('addon');
 
 function _calculateIndices ( mesh ) {
   let polygons = mesh.polygons;
-  let polygonTopologyList = mesh.polygonTopologyList;
+  let polygonSizes = mesh.polygonSizes;
   let indices = [];
 
   let i = 0;
   let curPolyIdx = 0;
 
   while ( i < polygons.length ) {
-    let stride = polygonTopologyList[curPolyIdx];
+    let stride = polygonSizes[curPolyIdx];
 
     if ( stride !== 3 && stride !== 4 ) {
       console.error(`Invalid polygon topology size: ${stride}`);
@@ -78,7 +78,7 @@ module.exports = {
  *
  * mesh = {
  *   name: '',
- *   vertices: [...],
+ *   points: [...],
  *   polygons: [...],
  *   polygonTopologyList: [...],
  *   normals: [...],

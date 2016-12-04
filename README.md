@@ -18,19 +18,27 @@ NOTE: This project is still work in progress.
 ## TODO
 
   - [x] dump node hierarchy
-  - [x] dump mesh vertices
+  - [x] dump mesh control-points
   - [x] dump mesh polygons
-  - [ ] dump mesh uv
-  - [ ] dump mesh normals
+  - [x] dump mesh polygon sizes
+  - [x] dump mesh normals
+  - [ ] dump mesh tangents and binormals ???
+  - [ ] dump mesh uvs, uvs1, uvs2, ...
+  - [ ] dump mesh colors
   - [ ] dump animation clip
   - [ ] dump skin
+  - [ ] convert blend-shapes to meshes ???
+  - [ ] triangulate mesh polygons
+  - [ ] split mesh data by control-points, normals, colors and uvs
+  - [ ] support Windows (help wanted)
+  - [ ] support Linux (help wanted)
 
 ## Reference
 
-  - [FBX SDK Documentation](http://help.autodesk.com/view/FBX/2016/ENU/)
-  - [A QUICK TUTORIAL ABOUT THE FBX ASCII FORMAT](https://banexdevblog.wordpress.com/2014/06/23/a-quick-tutorial-about-the-fbx-ascii-format/)
-  - [FBXLoader in Three.js](https://github.com/mrdoob/three.js/blob/dev/examples/js/loaders/FBXLoader.js)
-  - [BabylonFbxNative](https://github.com/BabylonJS/Babylon.js/tree/master/Exporters/FBX/BabylonFbxNative)
+  - [FBX SDK documentation](http://help.autodesk.com/view/FBX/2016/ENU/)
+  - [A quick tutorial about the FBX ASCII format](https://banexdevblog.wordpress.com/2014/06/23/a-quick-tutorial-about-the-fbx-ascii-format/)
+  - [FBX in Three.js](https://github.com/mrdoob/three.js/blob/dev/examples/js/loaders/FBXLoader.js)
+  - [FBX in Babylon.js](https://github.com/BabylonJS/Babylon.js/tree/master/Exporters/FBX/BabylonFbxNative)
 
 For people who is getting start to write native code for node.js:
 
