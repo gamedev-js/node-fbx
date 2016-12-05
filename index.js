@@ -56,6 +56,13 @@ module.exports = {
   calculateIndices: _calculateIndices,
 };
 
+// TODO:
+// compress binormals
+// since we have normals, tangents and binormals, we compress binormals by:
+//   vec3 binormal2 = cross(normal, tangent)
+//   float dir = dot(binormal, binormal2)
+// in this way, binormal is saved in one float.
+
 /**
  * scene = {
  *   nodes: [...],
@@ -80,12 +87,13 @@ module.exports = {
  *   name: '',
  *   points: [...],
  *   polygons: [...],
- *   polygonTopologyList: [...],
+ *   polygonSizes: [...],
  *   normals: [...],
  *   tangents: [...],
  *   colors: [...],
- *   uvs_0: [...],
- *   uvs_1: [...],
+ *   uv0: [...],
+ *   uv1: [...],
+ *   uv2: [...],
  *   materials: [...],
  * }
  *
