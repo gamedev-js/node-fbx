@@ -3,57 +3,12 @@
 const bindings = require('bindings');
 const addon = bindings('addon');
 
-function _calculateIndices ( mesh ) {
-  let polygons = mesh.polygons;
-  let polygonSizes = mesh.polygonSizes;
-  let indices = [];
-
-  let i = 0;
-  let curPolyIdx = 0;
-
-  while ( i < polygons.length ) {
-    let stride = polygonSizes[curPolyIdx];
-
-    if ( stride !== 3 && stride !== 4 ) {
-      console.error(`Invalid polygon topology size: ${stride}`);
-
-      i += stride;
-      ++curPolyIdx;
-
-      continue;
-    }
-
-    // quad
-    // a - d
-    // |   |
-    // b - c
-    //
-    // [( a, b, c, d ), ...]
-    // => [( a, b, c ), (a, c, d ), ...]
-    if ( stride === 4 ) {
-      indices.push( polygons[i] );
-      indices.push( polygons[i+1] );
-      indices.push( polygons[i+2] );
-
-      indices.push( polygons[i] );
-      indices.push( polygons[i+2] );
-      indices.push( polygons[i+3] );
-    } else {
-      indices.push( polygons[i] );
-      indices.push( polygons[i+1] );
-      indices.push( polygons[i+2] );
-    }
-
-    i += stride;
-    ++curPolyIdx;
-  }
-
-  return indices;
-}
+const mesh = require('./lib/mesh');
 
 module.exports = {
   load: addon.load,
-  calculateIndices: _calculateIndices,
+  triangulatePolygons: mesh.triangulatePolygons,
+  split: mesh.split,
 };
 
 // TODO:

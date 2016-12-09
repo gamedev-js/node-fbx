@@ -67,9 +67,12 @@ v8::Local<v8::Array> _dump_element_vec4 ( FbxMesh *_fbxMesh, T *_element ) {
       double x, y, z;
       _extract_vec4( data, &x, &y, &z );
 
-      Nan::Set(results, 3*i,     Nan::New(x));
-      Nan::Set(results, 3*i + 1, Nan::New(y));
-      Nan::Set(results, 3*i + 2, Nan::New(z));
+      v8::Local<v8::Array> vec = Nan::New<v8::Array>(3);
+      Nan::Set(vec, 0, Nan::New(x));
+      Nan::Set(vec, 1, Nan::New(y));
+      Nan::Set(vec, 2, Nan::New(z));
+
+      Nan::Set(results, i, vec);
     }
 
   } else if ( mappingMode == FbxLayerElement::eByPolygonVertex ) {
@@ -86,9 +89,12 @@ v8::Local<v8::Array> _dump_element_vec4 ( FbxMesh *_fbxMesh, T *_element ) {
       double x, y, z;
       _extract_vec4( data, &x, &y, &z );
 
-      Nan::Set(results, 3*i,     Nan::New(x));
-      Nan::Set(results, 3*i + 1, Nan::New(y));
-      Nan::Set(results, 3*i + 2, Nan::New(z));
+      v8::Local<v8::Array> vec = Nan::New<v8::Array>(3);
+      Nan::Set(vec, 0, Nan::New(x));
+      Nan::Set(vec, 1, Nan::New(y));
+      Nan::Set(vec, 2, Nan::New(z));
+
+      Nan::Set(results, i, vec);
     }
 
   } else if ( mappingMode == FbxLayerElement::eByPolygon ) {
@@ -111,9 +117,12 @@ v8::Local<v8::Array> _dump_element_vec4 ( FbxMesh *_fbxMesh, T *_element ) {
         double x, y, z;
         _extract_vec4( data, &x, &y, &z );
 
-        Nan::Set(results, 3*i,     Nan::New(x));
-        Nan::Set(results, 3*i + 1, Nan::New(y));
-        Nan::Set(results, 3*i + 2, Nan::New(z));
+        v8::Local<v8::Array> vec = Nan::New<v8::Array>(3);
+        Nan::Set(vec, 0, Nan::New(x));
+        Nan::Set(vec, 1, Nan::New(y));
+        Nan::Set(vec, 2, Nan::New(z));
+
+        Nan::Set(results, i, vec);
 
         i += 1;
       }
@@ -128,9 +137,12 @@ v8::Local<v8::Array> _dump_element_vec4 ( FbxMesh *_fbxMesh, T *_element ) {
     _extract_vec4( data, &x, &y, &z );
 
     for ( int i = 0; i < polygonVertexCount; ++i ) {
-      Nan::Set(results, 3*i,     Nan::New(x));
-      Nan::Set(results, 3*i + 1, Nan::New(y));
-      Nan::Set(results, 3*i + 2, Nan::New(z));
+      v8::Local<v8::Array> vec = Nan::New<v8::Array>(3);
+      Nan::Set(vec, 0, Nan::New(x));
+      Nan::Set(vec, 1, Nan::New(y));
+      Nan::Set(vec, 2, Nan::New(z));
+
+      Nan::Set(results, i, vec);
     }
 
   }
@@ -163,10 +175,13 @@ v8::Local<v8::Array> _dump_element_color ( FbxMesh *_fbxMesh, T *_element ) {
       double r, g, b, a;
       _extract_color( data, &r, &g, &b, &a );
 
-      Nan::Set(results, 4*i,     Nan::New(r));
-      Nan::Set(results, 4*i + 1, Nan::New(g));
-      Nan::Set(results, 4*i + 2, Nan::New(b));
-      Nan::Set(results, 4*i + 3, Nan::New(a));
+      v8::Local<v8::Array> vec = Nan::New<v8::Array>(4);
+      Nan::Set(vec, 0, Nan::New(r));
+      Nan::Set(vec, 1, Nan::New(g));
+      Nan::Set(vec, 2, Nan::New(b));
+      Nan::Set(vec, 3, Nan::New(a));
+
+      Nan::Set(results, i, vec);
     }
 
   } else if ( mappingMode == FbxLayerElement::eByPolygonVertex ) {
@@ -183,10 +198,13 @@ v8::Local<v8::Array> _dump_element_color ( FbxMesh *_fbxMesh, T *_element ) {
       double r, g, b, a;
       _extract_color( data, &r, &g, &b, &a );
 
-      Nan::Set(results, 4*i,     Nan::New(r));
-      Nan::Set(results, 4*i + 1, Nan::New(g));
-      Nan::Set(results, 4*i + 2, Nan::New(b));
-      Nan::Set(results, 4*i + 3, Nan::New(a));
+      v8::Local<v8::Array> vec = Nan::New<v8::Array>(4);
+      Nan::Set(vec, 0, Nan::New(r));
+      Nan::Set(vec, 1, Nan::New(g));
+      Nan::Set(vec, 2, Nan::New(b));
+      Nan::Set(vec, 3, Nan::New(a));
+
+      Nan::Set(results, i, vec);
     }
 
   } else if ( mappingMode == FbxLayerElement::eByPolygon ) {
@@ -209,10 +227,13 @@ v8::Local<v8::Array> _dump_element_color ( FbxMesh *_fbxMesh, T *_element ) {
         double r, g, b, a;
         _extract_color( data, &r, &g, &b, &a );
 
-        Nan::Set(results, 4*i,     Nan::New(r));
-        Nan::Set(results, 4*i + 1, Nan::New(g));
-        Nan::Set(results, 4*i + 2, Nan::New(b));
-        Nan::Set(results, 4*i + 3, Nan::New(a));
+        v8::Local<v8::Array> vec = Nan::New<v8::Array>(4);
+        Nan::Set(vec, 0, Nan::New(r));
+        Nan::Set(vec, 1, Nan::New(g));
+        Nan::Set(vec, 2, Nan::New(b));
+        Nan::Set(vec, 3, Nan::New(a));
+
+        Nan::Set(results, i, vec);
 
         i += 1;
       }
@@ -227,10 +248,13 @@ v8::Local<v8::Array> _dump_element_color ( FbxMesh *_fbxMesh, T *_element ) {
     _extract_color( data, &r, &g, &b, &a );
 
     for ( int i = 0; i < polygonVertexCount; ++i ) {
-      Nan::Set(results, 4*i,     Nan::New(r));
-      Nan::Set(results, 4*i + 1, Nan::New(g));
-      Nan::Set(results, 4*i + 2, Nan::New(b));
-      Nan::Set(results, 4*i + 3, Nan::New(a));
+      v8::Local<v8::Array> vec = Nan::New<v8::Array>(4);
+      Nan::Set(vec, 0, Nan::New(r));
+      Nan::Set(vec, 1, Nan::New(g));
+      Nan::Set(vec, 2, Nan::New(b));
+      Nan::Set(vec, 3, Nan::New(a));
+
+      Nan::Set(results, i, vec);
     }
 
   }
@@ -263,8 +287,11 @@ v8::Local<v8::Array> _dump_element_vec2 ( FbxMesh *_fbxMesh, T *_element ) {
       double x, y;
       _extract_vec2( data, &x, &y );
 
-      Nan::Set(results, 2*i,     Nan::New(x));
-      Nan::Set(results, 2*i + 1, Nan::New(y));
+      v8::Local<v8::Array> vec = Nan::New<v8::Array>(2);
+      Nan::Set(vec, 0, Nan::New(x));
+      Nan::Set(vec, 1, Nan::New(y));
+
+      Nan::Set(results, i, vec);
     }
 
   } else if ( mappingMode == FbxLayerElement::eByPolygonVertex ) {
@@ -281,8 +308,11 @@ v8::Local<v8::Array> _dump_element_vec2 ( FbxMesh *_fbxMesh, T *_element ) {
       double x, y;
       _extract_vec2( data, &x, &y );
 
-      Nan::Set(results, 2*i,     Nan::New(x));
-      Nan::Set(results, 2*i + 1, Nan::New(y));
+      v8::Local<v8::Array> vec = Nan::New<v8::Array>(2);
+      Nan::Set(vec, 0, Nan::New(x));
+      Nan::Set(vec, 1, Nan::New(y));
+
+      Nan::Set(results, i, vec);
     }
 
   } else if ( mappingMode == FbxLayerElement::eByPolygon ) {
@@ -305,8 +335,11 @@ v8::Local<v8::Array> _dump_element_vec2 ( FbxMesh *_fbxMesh, T *_element ) {
         double x, y;
         _extract_vec2( data, &x, &y );
 
-        Nan::Set(results, 2*i,     Nan::New(x));
-        Nan::Set(results, 2*i + 1, Nan::New(y));
+        v8::Local<v8::Array> vec = Nan::New<v8::Array>(2);
+        Nan::Set(vec, 0, Nan::New(x));
+        Nan::Set(vec, 1, Nan::New(y));
+
+        Nan::Set(results, i, vec);
 
         i += 1;
       }
@@ -321,8 +354,11 @@ v8::Local<v8::Array> _dump_element_vec2 ( FbxMesh *_fbxMesh, T *_element ) {
     _extract_vec2( data, &x, &y );
 
     for ( int i = 0; i < polygonVertexCount; ++i ) {
-      Nan::Set(results, 2*i,     Nan::New(x));
-      Nan::Set(results, 2*i + 1, Nan::New(y));
+      v8::Local<v8::Array> vec = Nan::New<v8::Array>(2);
+      Nan::Set(vec, 0, Nan::New(x));
+      Nan::Set(vec, 1, Nan::New(y));
+
+      Nan::Set(results, i, vec);
     }
 
   }
@@ -342,9 +378,13 @@ void _dump_points (v8::Local<v8::Object> _mesh, FbxMesh *_fbxMesh) {
 
     _extract_vec4( point, &x, &y, &z );
 
-    Nan::Set(points, 3*i,     Nan::New(x));
-    Nan::Set(points, 3*i + 1, Nan::New(y));
-    Nan::Set(points, 3*i + 2, Nan::New(z));
+    v8::Local<v8::Array> vec = Nan::New<v8::Array>(3);
+
+    Nan::Set(vec, 0, Nan::New(x));
+    Nan::Set(vec, 1, Nan::New(y));
+    Nan::Set(vec, 2, Nan::New(z));
+
+    Nan::Set(points, i, vec);
   }
 
   // mesh.points = [...]

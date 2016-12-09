@@ -25,11 +25,12 @@ NOTE: This project is still work in progress.
   - [x] dump mesh tangents and binormals
   - [x] dump mesh uvs, uvs1, uvs2, ...
   - [x] dump mesh colors
+  - [ ] dump mesh blend shapes
   - [ ] dump animation clip
   - [ ] dump skin
-  - [ ] convert blend-shapes to meshes ???
+  - [ ] convert blend-shapes to meshes
   - [ ] triangulate mesh polygons
-  - [ ] split mesh data by control-points, normals, colors and uvs
+  - [x] split mesh data by normals, binormals, tangents, colors and uvs
   - [ ] compress binormals
   - [ ] support Windows (help wanted)
   - [ ] support Linux (help wanted)
