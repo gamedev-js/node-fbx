@@ -31,6 +31,8 @@ NOTE: This project is still work in progress.
   - [ ] convert blend-shapes to meshes
   - [ ] triangulate mesh polygons
   - [x] split mesh data by normals, binormals, tangents, colors and uvs
+  - [ ] calculate normals
+  - [ ] calculate tangents from normals and uvs
   - [ ] compress binormals
   - [ ] support Windows (help wanted)
   - [ ] support Linux (help wanted)
