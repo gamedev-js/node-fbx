@@ -9,17 +9,18 @@ function print_node ( indent, node ) {
 }
 
 tap.test('load', {timeout: 0}, t => {
-  let scene = fbx.load('./models/xsi_man.fbx');
-  // let scene = fbx.load('./models/Ethan.fbx');
+  // let scene = fbx.load('./models/xsi_man.fbx');
+  // let scene = fbx.load('./models/xsi_man_skinning.fbx');
+  let scene = fbx.load('./models/Ethan.fbx');
 
   setTimeout(() => {
-    // console.log('\n');
+    console.log('\n');
 
-    // scene.nodes.forEach(node => {
-    //   print_node(0, node);
-    // });
+    scene.nodes.forEach(node => {
+      print_node(0, node);
+    });
 
-    // console.log(scene);
+    console.log(scene);
 
     for ( let i = 0; i < scene.meshes.length; ++i ) {
       scene.meshes[i] = fbx.split(scene.meshes[i]);

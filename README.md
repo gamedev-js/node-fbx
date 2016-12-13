@@ -31,6 +31,7 @@ NOTE: This project is still work in progress.
   - [ ] convert blend-shapes to meshes
   - [ ] triangulate mesh polygons
   - [x] split mesh data by normals, binormals, tangents, colors and uvs
+  - [ ] divide mesh data to sub-meshes by material
   - [ ] calculate normals
   - [ ] calculate tangents from normals and uvs
   - [ ] compress binormals
@@ -41,6 +42,13 @@ NOTE: This project is still work in progress.
 
   - [FBX SDK documentation](http://help.autodesk.com/view/FBX/2016/ENU/)
   - [A quick tutorial about the FBX ASCII format](https://banexdevblog.wordpress.com/2014/06/23/a-quick-tutorial-about-the-fbx-ascii-format/)
+  - [How to work with FBX SDK](http://www.gamedev.net/page/resources/_/technical/graphics-programming-and-theory/how-to-work-with-fbx-sdk-r3582)
+
+## Reference Source Code
+
+  - [lang1991/FBXExporter](https://github.com/lang1991/FBXExporter)
+  - [NickHardeman/ofxFBX](https://github.com/NickHardeman/ofxFBX)
+  - [libgdx/fbx-conv](https://github.com/libgdx/fbx-conv)
   - [FBX in Three.js](https://github.com/mrdoob/three.js/blob/dev/examples/js/loaders/FBXLoader.js)
   - [FBX in Babylon.js](https://github.com/BabylonJS/Babylon.js/tree/master/Exporters/FBX/BabylonFbxNative)
 

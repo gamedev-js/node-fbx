@@ -17,6 +17,35 @@ v8::Local<v8::Value> dump_node (FbxNode *_fbxNode) {
    Nan::New(_fbxNode->GetNameWithoutNameSpacePrefix().Buffer()).ToLocalChecked()
   );
 
+  // get position, rotation and scale
+  v8::Local<v8::Array> vec;
+  FbxAMatrix& lclTransform = _fbxNode->EvaluateLocalTransform();
+
+  // node.position
+  FbxVector4 t = lclTransform.GetT();
+  vec = Nan::New<v8::Array>(3);
+  Nan::Set(vec, 0, Nan::New(t[0]));
+  Nan::Set(vec, 1, Nan::New(t[1]));
+  Nan::Set(vec, 2, Nan::New(t[2]));
+  Nan::Set(node, Nan::New("position").ToLocalChecked(), vec);
+
+  // node.rotation
+  FbxQuaternion q = lclTransform.GetQ();
+  vec = Nan::New<v8::Array>(4);
+  Nan::Set(vec, 0, Nan::New(q[0]));
+  Nan::Set(vec, 1, Nan::New(q[1]));
+  Nan::Set(vec, 2, Nan::New(q[2]));
+  Nan::Set(vec, 3, Nan::New(q[3]));
+  Nan::Set(node, Nan::New("rotation").ToLocalChecked(), vec);
+
+  // node.scale
+  FbxVector4 s = lclTransform.GetS();
+  vec = Nan::New<v8::Array>(3);
+  Nan::Set(vec, 0, Nan::New(s[0]));
+  Nan::Set(vec, 1, Nan::New(s[1]));
+  Nan::Set(vec, 2, Nan::New(s[2]));
+  Nan::Set(node, Nan::New("scale").ToLocalChecked(), vec);
+
   // node.type = "...";
   const char *typeName = "";
   FbxNodeAttribute::EType fbxAttrType = fbxNodeAttr->GetAttributeType();
@@ -37,10 +66,21 @@ v8::Local<v8::Value> dump_node (FbxNode *_fbxNode) {
   if ( fbxAttrType == FbxNodeAttribute::eMesh ) {
     FbxMesh* fbxMesh = (FbxMesh*) _fbxNode->GetNodeAttribute ();
 
-    // if we already dumped the mesh, skip it
-    if ( fbxMesh && std::find(_cachedFbxMeshes.begin(), _cachedFbxMeshes.end(), fbxMesh) == _cachedFbxMeshes.end() ) {
-      _cachedFbxMeshes.push_back(fbxMesh);
-      _dumpedMeshes.push_back(dump_mesh(_fbxNode));
+    if ( fbxMesh ) {
+      std::vector<FbxMesh *>::iterator it = std::find(_cachedFbxMeshes.begin(), _cachedFbxMeshes.end(), fbxMesh);
+      int index = -1;
+
+      // if we already dumped the mesh, skip it
+      if ( it == _cachedFbxMeshes.end() ) {
+        _cachedFbxMeshes.push_back(fbxMesh);
+        _dumpedMeshes.push_back(dump_mesh(_fbxNode));
+
+        index = _dumpedMeshes.size()-1;
+      } else {
+        index = it - _cachedFbxMeshes.begin();
+      }
+
+      Nan::Set(node, Nan::New("refID").ToLocalChecked(), Nan::New(index));
     }
   }
 
