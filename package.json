@@ -7,9 +7,11 @@
     "fbx": "bin/run.js"
   },
   "scripts": {
-    "build": "node-gyp rebuild",
+    "build": "node-gyp build",
+    "rebuild": "node-gyp rebuild -j 10",
     "install": "node-gyp rebuild",
-    "test": "tap test/**/*.js"
+    "prepare": "node test/prepare.js",
+    "test": "tap test/specs/*.js"
   },
   "keywords": [
     "fbx"
@@ -17,7 +19,7 @@
   "author": "jwu",
   "license": "MIT",
   "dependencies": {
-    "bindings": "^1.2.1",
+    "libtess": "^1.2.2",
     "nan": "^2.4.0"
   },
   "devDependencies": {

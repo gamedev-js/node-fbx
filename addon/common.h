@@ -14,6 +14,7 @@ bool load_scene (FbxManager *_fbxMgr, FbxDocument *_fbxScene, const char *_filen
 v8::Local<v8::Object> dump_scene (FbxScene *_fbxScene);
 v8::Local<v8::Value> dump_node (FbxNode *_fbxNode);
 v8::Local<v8::Value> dump_mesh (FbxNode *_fbxNode);
+v8::Local<v8::Array> dump_animations (FbxScene *_fbxScene);
 
 extern std::vector<v8::Local<v8::Value>> _dumpedMeshes;
 extern std::vector<FbxMesh *> _cachedFbxMeshes;

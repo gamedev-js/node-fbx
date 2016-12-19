@@ -57,6 +57,17 @@ For people who is getting start to write native code for node.js:
   - https://github.com/nodejs/nan#api
   - https://github.com/fcanas/node-native-boilerplate/blob/master/functions.cc
 
+## Known Issues
+
+1. Link the libfbxsdk.dylib
+
+The fbxsdk use `@executable_path` as install path in MacOSX. We need to replace it with `@rpath` otherwise our
+programme can not find the path to load the library. To do this, just run:
+
+```bash
+install_name_tool -id "@rpath/libfbxsdk.dylib" libfbxsdk.dylib
+```
+
 ## License
 
 MIT © 2016 Johnny Wu

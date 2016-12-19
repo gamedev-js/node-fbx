@@ -1,8 +1,6 @@
 'use strict';
 
-const bindings = require('bindings');
-const addon = bindings('addon');
-
+const addon = require('./build/Release/addon.node');
 const mesh = require('./lib/mesh');
 
 module.exports = {

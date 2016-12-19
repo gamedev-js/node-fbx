@@ -1,5 +1,5 @@
 const tap = require('tap');
-const fbx = require('../index.js');
+const fbx = require('../../index.js');
 
 function print_node ( indent, node ) {
   console.log( ' '.repeat(indent) + '|-' + node.name + ` [${node.type}]` );
@@ -10,8 +10,8 @@ function print_node ( indent, node ) {
 
 tap.test('load', {timeout: 0}, t => {
   // let scene = fbx.load('./models/xsi_man.fbx');
-  // let scene = fbx.load('./models/xsi_man_skinning.fbx');
-  let scene = fbx.load('./models/Ethan.fbx');
+  let scene = fbx.load('./models/xsi_man_skinning.fbx');
+  // let scene = fbx.load('./models/Ethan.fbx');
 
   setTimeout(() => {
     console.log('\n');

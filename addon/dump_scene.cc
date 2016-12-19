@@ -19,5 +19,8 @@ v8::Local<v8::Object> dump_scene (FbxScene *_fbxScene) {
   }
   Nan::Set(scene, Nan::New("meshes").ToLocalChecked(), meshes);
 
+  // scene.animations = [...];
+  Nan::Set(scene, Nan::New("animations").ToLocalChecked(), dump_animations(_fbxScene));
+
   return scene;
 }

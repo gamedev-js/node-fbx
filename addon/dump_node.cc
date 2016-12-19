@@ -21,7 +21,7 @@ v8::Local<v8::Value> dump_node (FbxNode *_fbxNode) {
   v8::Local<v8::Array> vec;
   FbxAMatrix& lclTransform = _fbxNode->EvaluateLocalTransform();
 
-  // node.position
+  // node.position = [...]
   FbxVector4 t = lclTransform.GetT();
   vec = Nan::New<v8::Array>(3);
   Nan::Set(vec, 0, Nan::New(t[0]));
@@ -29,7 +29,7 @@ v8::Local<v8::Value> dump_node (FbxNode *_fbxNode) {
   Nan::Set(vec, 2, Nan::New(t[2]));
   Nan::Set(node, Nan::New("position").ToLocalChecked(), vec);
 
-  // node.rotation
+  // node.rotation = [...]
   FbxQuaternion q = lclTransform.GetQ();
   vec = Nan::New<v8::Array>(4);
   Nan::Set(vec, 0, Nan::New(q[0]));
@@ -38,13 +38,15 @@ v8::Local<v8::Value> dump_node (FbxNode *_fbxNode) {
   Nan::Set(vec, 3, Nan::New(q[3]));
   Nan::Set(node, Nan::New("rotation").ToLocalChecked(), vec);
 
-  // node.scale
+  // node.scale = [...]
   FbxVector4 s = lclTransform.GetS();
   vec = Nan::New<v8::Array>(3);
   Nan::Set(vec, 0, Nan::New(s[0]));
   Nan::Set(vec, 1, Nan::New(s[1]));
   Nan::Set(vec, 2, Nan::New(s[2]));
   Nan::Set(node, Nan::New("scale").ToLocalChecked(), vec);
+
+  // TODO: node.properties = {...} (for user data)
 
   // node.type = "...";
   const char *typeName = "";
