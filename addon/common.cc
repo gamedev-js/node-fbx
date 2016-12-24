@@ -50,6 +50,17 @@ bool load_scene (FbxManager *_fbxMgr, FbxDocument *_fbxScene, const char *_filen
   // create an importer
   FbxImporter *importer = FbxImporter::Create(_fbxMgr, "");
 
+  // Set the import states.
+  // NOTE: I try to change some of them to false, but has no effect.
+  IOS_REF.SetBoolProp(IMP_FBX_MATERIAL,        true);
+  IOS_REF.SetBoolProp(IMP_FBX_TEXTURE,         true);
+  IOS_REF.SetBoolProp(IMP_FBX_MODEL,           true);
+  IOS_REF.SetBoolProp(IMP_FBX_LINK,            true);
+  IOS_REF.SetBoolProp(IMP_FBX_SHAPE,           true);
+  IOS_REF.SetBoolProp(IMP_FBX_GOBO,            true);
+  IOS_REF.SetBoolProp(IMP_FBX_ANIMATION,       true);
+  IOS_REF.SetBoolProp(IMP_FBX_GLOBAL_SETTINGS, true);
+
   // Initialize the importer by providing a filename.
   status = importer->Initialize(_filename, -1, _fbxMgr->GetIOSettings());
   importer->GetFileVersion(major, minor, patch);
@@ -72,16 +83,6 @@ bool load_scene (FbxManager *_fbxMgr, FbxDocument *_fbxScene, const char *_filen
 
     return false;
   }
-
-  // Set the import states. By default, the import states are always set to
-  // true. The code below shows how to change these states.
-  IOS_REF.SetBoolProp(IMP_FBX_MATERIAL,        true);
-  IOS_REF.SetBoolProp(IMP_FBX_TEXTURE,         true);
-  IOS_REF.SetBoolProp(IMP_FBX_LINK,            true);
-  IOS_REF.SetBoolProp(IMP_FBX_SHAPE,           true);
-  IOS_REF.SetBoolProp(IMP_FBX_GOBO,            true);
-  IOS_REF.SetBoolProp(IMP_FBX_ANIMATION,       true);
-  IOS_REF.SetBoolProp(IMP_FBX_GLOBAL_SETTINGS, true);
 
   //
   status = importer->Import(_fbxScene);

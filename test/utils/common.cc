@@ -39,9 +39,28 @@ void deinit_fbx_sdk (FbxManager *&_fbxMgr) {
   }
 }
 
-bool save_scene (FbxManager *_fbxMgr, FbxDocument *_fbxScene, const char *_filename) {
+bool save_scene (FbxManager *_fbxMgr, FbxDocument *_fbxScene, const char *_filename, bool _ascii) {
   int major, minor, patch;
   bool status;
+  int fileFormat = -1;
+
+  // Try to export in ASCII if possibl
+  if ( _ascii ) {
+    fileFormat = _fbxMgr->GetIOPluginRegistry()->GetNativeWriterFormat();
+    int cnt = _fbxMgr->GetIOPluginRegistry()->GetWriterFormatCount();
+
+    for ( int idx = 0; idx < cnt; ++idx ) {
+      if ( _fbxMgr->GetIOPluginRegistry()->WriterIsFBX(idx) ) {
+        FbxString desc = _fbxMgr->GetIOPluginRegistry()->GetWriterFormatDescription(idx);
+        const char *ascii = "ascii";
+
+        if ( desc.Find(ascii) >= 0 ) {
+          fileFormat = idx;
+          break;
+        }
+      }
+    }
+  }
 
   // create an exporter
   FbxExporter *exporter = FbxExporter::Create(_fbxMgr, "");
@@ -57,7 +76,7 @@ bool save_scene (FbxManager *_fbxMgr, FbxDocument *_fbxScene, const char *_filen
   IOS_REF.SetBoolProp(EXP_FBX_GLOBAL_SETTINGS, true);
 
   // Initialize the exporter by providing a filename.
-  status = exporter->Initialize(_filename, -1, _fbxMgr->GetIOSettings());
+  status = exporter->Initialize(_filename, fileFormat, _fbxMgr->GetIOSettings());
 
   if (!status) {
     FbxString error = exporter->GetStatus().GetErrorString();

@@ -20,20 +20,20 @@ module.exports = {
  * scene = {
  *   nodes: [...],
  *   meshes: [...],
- *   materials: [...],
- *   animationClips: [...],
+ *   animations: [...],
+ *   TODO: materials: [...],
  * }
  *
  * node = {
  *   name: '',
  *   type: '',
- *   position: [1, 2, 3],
- *   rotation: [1, 2, 3, 4],
- *   scale: [1, 2, 3],
+ *   position: [x, y, z],
+ *   rotation: [x, y, z, w],
+ *   scale: [x, y, z],
  *   children: [...],
  *
- *   // optional
- *   meshID: -1,
+ *   // optional (resource reference ID)
+ *   refID: -1,
  * }
  *
  * mesh = {
@@ -43,17 +43,19 @@ module.exports = {
  *   polygonSizes: [...],
  *   normals: [...],
  *   tangents: [...],
+ *   binormals: [...],
  *   colors: [...],
- *   uv0: [...],
- *   uv1: [...],
- *   uv2: [...],
- *   materials: [...],
+ *   uvs0: [...],
+ *   uvs1: [...],
+ *   ...: [...],
+ *   uvs7 [...],
  * }
  *
+ * TODO:
  * material = {
  *   name: '',
- *   diffuse: [1, 2, 3, 4],
- *   ambient: [1, 2, 3, 4],
+ *   diffuse: [r, g, b, a],
+ *   ambient: [r, g, b, a],
  *   texDiffuse: -1,
  *   texNormal: -1,
  * }

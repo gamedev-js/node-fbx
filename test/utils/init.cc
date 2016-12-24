@@ -1,5 +1,9 @@
 #include "./common.h"
 
+void _create_scene(FbxScene *_fbxScene) {
+  // TODO:
+}
+
 NAN_METHOD(newAnim) {
   // handle arguments
   v8::Local<v8::String> arg0 = info[0].As<v8::String>();
@@ -12,7 +16,10 @@ NAN_METHOD(newAnim) {
   FbxScene *fbxScene = NULL;
   init_fbx_sdk(fbxMgr, fbxScene);
 
-  // TODO
+  // create scene
+  _create_scene(fbxScene);
+
+  // save scene
   save_scene(fbxMgr, fbxScene, path);
 
   // deinit

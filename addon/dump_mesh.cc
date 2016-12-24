@@ -526,9 +526,7 @@ void _dump_uvs (v8::Local<v8::Object> _mesh, FbxMesh *_fbxMesh) {
   }
 }
 
-v8::Local<v8::Value> dump_mesh (FbxNode *_fbxNode) {
-  FbxMesh *fbxMesh = (FbxMesh *)_fbxNode->GetNodeAttribute ();
-
+v8::Local<v8::Value> dump_mesh (FbxMesh *_fbxMesh) {
   // var mesh = {};
   v8::Local<v8::Object> mesh = Nan::New<v8::Object>();
 
@@ -536,33 +534,33 @@ v8::Local<v8::Value> dump_mesh (FbxNode *_fbxNode) {
   Nan::Set(
     mesh,
     Nan::New("name").ToLocalChecked(),
-    Nan::New(_fbxNode->GetNameWithoutNameSpacePrefix().Buffer()).ToLocalChecked()
+    Nan::New(_fbxMesh->GetNameWithoutNameSpacePrefix().Buffer()).ToLocalChecked()
   );
 
   // mesh.points = [...];
-  _dump_points(mesh, fbxMesh);
+  _dump_points(mesh, _fbxMesh);
 
   // mesh.polygons = [...];
   // mesh.polygonSizes = [...];
-  _dump_polygons(mesh, fbxMesh);
+  _dump_polygons(mesh, _fbxMesh);
 
   // mesh.normals = [...];
-  _dump_normals(mesh, fbxMesh);
+  _dump_normals(mesh, _fbxMesh);
 
   // mesh.tangents = [...];
-  _dump_tangents(mesh, fbxMesh);
+  _dump_tangents(mesh, _fbxMesh);
 
   // mesh.binormals = [...];
-  _dump_binormals(mesh, fbxMesh);
+  _dump_binormals(mesh, _fbxMesh);
 
   // mesh.colors = [...];
-  _dump_colors(mesh, fbxMesh);
+  _dump_colors(mesh, _fbxMesh);
 
   // mesh.uvs = [...];
   // mesh.uvs1
   // mesh.uvs2
   // ...
-  _dump_uvs(mesh, fbxMesh);
+  _dump_uvs(mesh, _fbxMesh);
 
   return mesh;
 }
