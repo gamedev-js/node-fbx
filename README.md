@@ -26,7 +26,7 @@ NOTE: This project is still work in progress.
   - [x] dump mesh uvs, uvs1, uvs2, ...
   - [x] dump mesh colors
   - [ ] dump mesh blend shapes
-  - [ ] dump animation clip
+  - [x] dump animation clip
   - [ ] dump skin
   - [ ] convert blend-shapes to meshes
   - [ ] triangulate mesh polygons

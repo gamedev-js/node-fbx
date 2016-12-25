@@ -9,10 +9,12 @@ function print_node ( indent, node ) {
 }
 
 tap.test('load', {timeout: 0}, t => {
-  let scene = fbx.load('./models/xsi_man.fbx', {
-    sampleRate: 100
-  });
-  // let scene = fbx.load('./models/xsi_man_skinning.fbx');
+  // let scene = fbx.load('./models/xsi_man.fbx', {
+  //   importMesh: true,
+  //   importAnimation: true,
+  //   sampleRate: -1,
+  // });
+  let scene = fbx.load('./models/xsi_man_skinning.fbx');
   // let scene = fbx.load('./models/Ethan.fbx');
 
   setTimeout(() => {

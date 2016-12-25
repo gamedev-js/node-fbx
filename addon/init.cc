@@ -17,7 +17,7 @@ NAN_METHOD(load) {
   // set default options
   opts.importMesh = true;
   opts.importAnimation = true;
-  opts.sampleRate = 60;
+  opts.sampleRate = -1;
 
   // read argument0, path
   v8::Local<v8::String> arg0 = info[0].As<v8::String>();
@@ -42,7 +42,7 @@ NAN_METHOD(load) {
 
     prop = Nan::Get(arg1, Nan::New("sampleRate").ToLocalChecked()).ToLocalChecked();;
     if ( prop->IsNumber() ) {
-      opts.sampleRate = prop->Int32Value();
+      opts.sampleRate = prop->NumberValue();
     }
   }
 
