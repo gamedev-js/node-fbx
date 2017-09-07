@@ -11,7 +11,8 @@
     "rebuild": "node-gyp rebuild -j 10",
     "install": "node-gyp rebuild",
     "prepare": "node test/prepare.js",
-    "test": "tap test/specs/*.js"
+    "test": "tap test/specs/*.js",
+    "start": "node scripts/run.js"
   },
   "keywords": [
     "fbx"

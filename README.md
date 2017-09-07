@@ -49,13 +49,9 @@ NOTE: This project is still work in progress.
   - [lang1991/FBXExporter](https://github.com/lang1991/FBXExporter)
   - [NickHardeman/ofxFBX](https://github.com/NickHardeman/ofxFBX)
   - [libgdx/fbx-conv](https://github.com/libgdx/fbx-conv)
+  - [guillaumeblanc/ozz-animation](https://github.com/guillaumeblanc/ozz-animation)
   - [FBX in Three.js](https://github.com/mrdoob/three.js/blob/dev/examples/js/loaders/FBXLoader.js)
   - [FBX in Babylon.js](https://github.com/BabylonJS/Babylon.js/tree/master/Exporters/FBX/BabylonFbxNative)
-
-For people who is getting start to write native code for node.js:
-
-  - https://github.com/nodejs/nan#api
-  - https://github.com/fcanas/node-native-boilerplate/blob/master/functions.cc
 
 ## Known Issues
 

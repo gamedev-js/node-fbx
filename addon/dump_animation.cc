@@ -412,7 +412,9 @@ v8::Local<v8::Value> _dump_animation (FbxScene *_fbxScene, FbxAnimStack *_fbxAni
   // }
 
   // FbxAnimLayer *fbxAnimLayer = _fbxAnimStack->GetMember<FbxAnimLayer>(0);
-  // _recurse_node( nodes, "", fbxAnimLayer, fbxRoot );
+  // for ( int i = 0; i < fbxRoot->GetChildCount(); ++i ) {
+  //   _recurse_node( nodes, "", fbxAnimLayer, fbxRoot->GetChild(i) );
+  // }
 
   // Nan::Set(
   //   animation,
@@ -424,7 +426,9 @@ v8::Local<v8::Value> _dump_animation (FbxScene *_fbxScene, FbxAnimStack *_fbxAni
   //
   // animation.nodes = [...];
   v8::Local<v8::Array> nodes = Nan::New<v8::Array>();
-  _recurse_node_track( nodes, "", fbxRoot, timeSpan, sampleRate );
+  for ( int i = 0; i < fbxRoot->GetChildCount(); ++i ) {
+    _recurse_node_track( nodes, "", fbxRoot->GetChild(i), timeSpan, sampleRate );
+  }
 
   Nan::Set(
     animation,
